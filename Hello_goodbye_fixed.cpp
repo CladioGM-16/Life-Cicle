@@ -23,8 +23,8 @@ void say_hello() {
 void say_goodbye() {
     {
         std::lock_guard<std::mutex> lock(cout_mutex);
-        std::cout << "[Goodbye Thread] PID: " << getpid() << std::endl;
-        std::cout << "[Goodbye Thread] Thread ID: " << std::this_thread::get_id() << std::endl;
+        std::cout << "Goodbye Thread PID: " << getpid() << std::endl;
+        std::cout << "Goodbye Thread Thread ID: " << std::this_thread::get_id() << std::endl;
     }
 
     while (true) {
@@ -38,8 +38,8 @@ void say_goodbye() {
 int main() {
     {
         std::lock_guard<std::mutex> lock(cout_mutex);
-        std::cout << "[Main Thread] Process ID: " << getpid() << std::endl;
-        std::cout << "[Main Thread] Thread ID: " << std::this_thread::get_id() << std::endl;
+        std::cout << "Main Thread PID: " << getpid() << std::endl;
+        std::cout << "Main Thread Thread ID: " << std::this_thread::get_id() << std::endl;
     }
     std::thread thread_hello(say_hello);
     std::thread thread_goodbye(say_goodbye);
